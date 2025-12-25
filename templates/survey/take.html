@@ -1,0 +1,11 @@
+<h2>Employee Survey</h2>
+<form method="post">
+  {% for s in surveys %}
+    <p>{{ s.question }}</p>
+    {% for i in range(1,6) %}
+      <input type="radio" name="{{ s.id }}" value="{{ i }}" required> {{ i }}
+    {% endfor %}
+  {% endfor %}
+  <br><br>
+  <button type="submit">Submit</button>
+</form>

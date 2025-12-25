@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Engagement + Psychometric Insights</h2>
+
+<p>
+Example interpretation:
+<ul>
+  <li>High Engagement + High Conscientiousness → Reliable performers</li>
+  <li>High Engagement + High Extraversion → Leadership potential</li>
+  <li>Low Engagement + High Neuroticism → Burnout risk</li>
+</ul>
+</p>
+
+{{ table | safe }}
+
+{% endblock %}

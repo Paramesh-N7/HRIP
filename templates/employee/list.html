@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Employees</h2>
+
+<p>
+  Logged in as: {{ current_user.email }} ({{ current_user.role }})
+</p>
+
+{% if current_user.role == "Admin" %}
+  <a href="/employees/add">➕ Add Employee</a>
+{% endif %}
+
+<table border="1">
+<tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Department</th>
+  <th>Role</th>
+  <th>Salary</th>
+
+  {% if current_user.role == "Admin" %}
+    <th>Actions</th>
+  {% endif %}
+</tr>
+
+{% for emp in employees %}
+<tr>
+  <td>{{ emp.name }}</td>
+  <td>{{ emp.email }}</td>
+  <td>{{ emp.department }}</td>
+  <td>{{ emp.role }}</td>
+  <td>{{ emp.salary }}</td>
+
+  {% if current_user.role == "Admin" %}
+  <td>
+    <a href="/employees/edit/{{ emp.id }}">Edit</a> |
+    <a href="/employees/delete/{{ emp.id }}">Delete</a>
+  </td>
+  {% endif %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

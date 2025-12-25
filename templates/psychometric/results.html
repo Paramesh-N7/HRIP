@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Psychometric Profile</h2>
+
+<canvas id="oceanChart" width="400" height="400"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = {{ results | map(attribute=0) | list | tojson }};
+const scores = {{ results | map(attribute=1) | list | tojson }};
+
+new Chart(document.getElementById("oceanChart"), {
+    type: "radar",
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "OCEAN Score",
+            data: scores,
+            fill: true,
+            backgroundColor: "rgba(54, 162, 235, 0.2)",
+            borderColor: "rgb(54, 162, 235)"
+        }]
+    },
+    options: {
+        scales: {
+            r: {
+                min: 0,
+                max: 5
+            }
+        }
+    }
+});
+</script>
+
+{% endblock %}

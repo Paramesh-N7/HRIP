@@ -1,0 +1,6 @@
+<h2>Survey Results</h2>
+<ul>
+  {% for r in responses %}
+    <li>Employee {{ r.employee_id }} | Q{{ r.survey_id }} | Rating: {{ r.rating }}</li>
+  {% endfor %}
+</ul>

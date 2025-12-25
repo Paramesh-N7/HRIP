@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Create Survey Question</h2>
+
+<form method="post">
+    <label>Question</label><br>
+    <input type="text" name="question" required><br><br>
+
+    <label>Category</label><br>
+    <select name="category" required>
+        <option value="Engagement">Engagement</option>
+        <option value="Culture">Culture</option>
+        <option value="Leadership">Leadership</option>
+        <option value="Work Environment">Work Environment</option>
+    </select><br><br>
+
+    <button type="submit">Create Question</button>
+</form>
+
+<br>
+<a href="/survey">Back to Survey List</a>
+{% endblock %}

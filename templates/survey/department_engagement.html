@@ -1,0 +1,15 @@
+<h2>Department Engagement Scores</h2>
+
+<table border="1">
+<tr>
+    <th>Department</th>
+    <th>Engagement Score</th>
+</tr>
+
+{% for dept, score in results %}
+<tr>
+    <td>{{ dept }}</td>
+    <td>{{ "%.2f"|format(score) }}</td>
+</tr>
+{% endfor %}
+</table>

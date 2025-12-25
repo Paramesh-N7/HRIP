@@ -1,0 +1,15 @@
+<h2>Employee Engagement Scores</h2>
+
+<table border="1">
+<tr>
+    <th>Employee</th>
+    <th>Engagement Score</th>
+</tr>
+
+{% for name, score in results %}
+<tr>
+    <td>{{ name }}</td>
+    <td>{{ "%.2f"|format(score) }}</td>
+</tr>
+{% endfor %}
+</table>

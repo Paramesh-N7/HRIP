@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Survey Questions</h2>
+
+<ul>
+  {% for s in surveys %}
+    <li>{{ s.question }} ({{ s.category }})</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<h2>Category Engagement Scores</h2>
+
+<table border="1">
+<tr>
+    <th>Category</th>
+    <th>Engagement Score</th>
+</tr>
+
+{% for cat, score in results %}
+<tr>
+    <td>{{ cat }}</td>
+    <td>{{ "%.2f"|format(score) }}</td>
+</tr>
+{% endfor %}
+</table>

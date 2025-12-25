@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>HR Analytics Dashboard</h2>
+
+<h3>Employee Engagement</h3>
+{{ emp_table | safe }}
+
+<h3>Department Engagement</h3>
+{{ dept_table | safe }}
+<h3>Department Engagement Chart</h3>
+<canvas id="deptChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const deptLabels = {{ dept_df["Department"].tolist() | tojson }};
+const deptScores = {{ dept_df["Engagement Score"].tolist() | tojson }};
+
+new Chart(document.getElementById("deptChart"), {
+    type: "bar",
+    data: {
+        labels: deptLabels,
+        datasets: [{
+            label: "Engagement Score",
+            data: deptScores,
+            backgroundColor: "rgba(75, 192, 192, 0.6)"
+        }]
+    },
+    options: {
+        scales: {
+            y: { min: 0, max: 5 }
+        }
+    }
+});
+</script>
+
+
+<h3>Category Engagement</h3>
+{{ cat_table | safe }}
+
+<br>
+<a href="/reports/export/engagement">⬇ Export Employee Engagement (CSV)</a>
+{% endblock %}
